@@ -1,8 +1,10 @@
 T = int(input())
-tc = [int(input()) for i in range(T)]
-print(tc)
-
-dp = [0] * 41
-dp[1] = 1
-for i in range(2, 41):
-    dp[i] = dp[i - 1] + dp[i - 2]
+for _ in range(T):
+    N = int(input())
+    zero = [1, 0, 1]
+    one = [0, 1, 1]
+    if N >= 3:
+        for idx in range(3, N + 1):
+            zero.append(zero[idx - 1] + zero[idx - 2])
+            one.append(one[idx - 1] + one[idx - 2])
+    print(zero[N], one[N])
